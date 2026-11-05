@@ -1,0 +1,172 @@
+{
+  "pages": [
+    {
+      "url": "https://boutique-entreprise.orange.ma/",
+      "file": "offre_mobile.md"
+    },
+    {
+      "url": "https://boutique-entreprise.orange.ma/fixe-internet",
+      "file": "offre_internet.md"
+    },
+    {
+      "url": "https://boutique-entreprise.orange.ma/smartphones",
+      "file": "smartphones.md"
+    },
+    {
+      "url": "https://boutique-entreprise.orange.ma/accessoires",
+      "file": "accessoires.md"
+    },
+    {
+      "url": "https://boutique.orange.ma/fibre-d-orange?ts_ftth_type_multiselect=Pour+mon+activit%C3%A9+professionnelle",
+      "file": "fibre_pro.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Cloud/Microsoft/Microsoft-Azure",
+      "file": "cloud_azure.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Cloud/AWS/Amazon-Web-Services",
+      "file": "cloud_aws.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business2/Solutions-avancees/Business-Hosting",
+      "file": "business_hosting.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business2/Solutions-avancees/Business-Cloud",
+      "file": "business_cloud.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business/Solutions-avancees/Machine-to-Machine",
+      "file": "iot_m2m.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business/Solutions-avancees/Smart-Message",
+      "file": "smart_message.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Smart-flotte",
+      "file": "smart_flotte.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business/Mobile/Pass-et-options-Orange",
+      "file": "pass_et_options.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business/Fixe/Solutions-de-Connectivite/IP-VPN",
+      "file": "ip_vpn.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business/Fixe/Solutions-de-Connectivite/Mobile-VPN",
+      "file": "mobile_vpn.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business/Fixe/Solutions-de-Connectivite/Lan-to-Lan",
+      "file": "lan_to_lan.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business2/Solutions-avancees/Business-SD-WAN",
+      "file": "business_sdwan.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business/Mobile/Telephonie-Mobile/swapy",
+      "file": "swapy.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business/Fixe/Internet-Haut-Debit/Dual-Play",
+      "file": "dual_play.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Fixe-et-Internet/Telephonie-fixe/Business-Talk",
+      "file": "business_talk.md"
+    },
+    {
+      "url": "https://www.orange.ma/Assistance/Boutique-en-ligne/Comment-activer-forfait-Orange",
+      "file": "activation_forfait.md"
+    },
+    {
+      "url": "https://www.orange.ma/Assistance/Boutique-en-ligne/Comment-acheter-forfait-Orange-ligne",
+      "file": "achat_forfait_en_ligne.md"
+    },
+    {
+      "url": "https://www.orange.ma/Assistance/Recharge-Orange/Comment-recharger-mon-numero-Orange",
+      "file": "recharge_orange.md"
+    },
+    {
+      "url": "https://www.orange.ma/Assistance/Recharge-Orange/Carte-de-recharge-bloquee-apres-plusieurs-tentatives-de-renseignement-du-code",
+      "file": "problemes_carte_recharge.md"
+    },
+    {
+      "url": "https://www.orange.ma/Assistance/Recharge-Orange/Non-reception-d-une-recharge-effectuee-en-ligne",
+      "file": "non_reception_recharge.md"
+    },
+    {
+      "url": "https://www.orange.ma/Assistance/Autres/Configurer-Internet",
+      "file": "configuration_internet.md"
+    },
+    {
+      "url": "https://www.orange.ma/Assistance/Autres/Configuration-Roaming",
+      "file": "configuration_roaming.md"
+    },
+    {
+      "url": "https://www.orange.ma/Assistance/Autres/carte-bancaire-sur-Orange-et-moi",
+      "file": "paiement_carte_bancaire.md"
+    },
+    {
+      "url": "https://www.orange.ma/Assistance/Autres/Depannage-de-votre-modem",
+      "file": "depannage_modem.md"
+    },
+    {
+      "url": "https://www.orange.ma/Assistance/Autres/Probleme-d-appels",
+      "file": "problemes_appels.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business/Fixe/Telephonie-Fixe/Office-Pack",
+      "file": "office_pack.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business/Fixe/Telephonie-Fixe/Abonnement-fixe",
+      "file": "abonnement_fixe.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Cybersecurite",
+      "file": "cybersecurite.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business/Solutions-avancees/Business-DDoS-Security",
+      "file": "business_ddos_security.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Solutions-Business/Solutions-avancees/Device-Management-Premium",
+      "file": "device_management.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Cybersecurite/Micro-Soc-Enterprise",
+      "file": "micro_soc.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Assistance/Factures-et-paiements",
+      "file": "factures_et_paiements.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Assistance/Urgences-et-depannage",
+      "file": "urgences_et_depannage.md"
+    },
+    {
+      "url": "https://configuration-mobile.orange.ma/",
+      "file": "configuration_mobile.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Assistance/Acces-Internet/Mobile",
+      "file": "assistance_internet_mobile.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Assistance/Acces-Internet/Business-BOX-Fixe-4G",
+      "file": "assistance_business_box_4g.md"
+    },
+    {
+      "url": "https://entreprise.orange.ma/Assistance/Acces-Internet/Business-Box-Fibre",
+      "file": "assistance_business_box_fibre.md"
+    }
+  ]
+}
