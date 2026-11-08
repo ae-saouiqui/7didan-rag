@@ -7,3 +7,4 @@ retrieval_service/pg_rt_test.py
 .env
 .env.*
 !.env.example
+!.env.docker
