@@ -143,6 +143,18 @@ python scripts/export_db.py     # writes postgres/7didan_backup.sql
 
 ## 💻 Local development (without Docker)
 
+**Dependencies:** `requirements.txt` covers the **whole project** — the RAG API
+*plus* the ingestion stack (Crawl4AI, docling, …) and dev tools. If you only work on
+the **RAG service** (`retrieval_service/` — the part the marketing project integrates
+with), you don't need the ingestion stack:
+
+```bash
+pip install -r requirements-prod.txt     # RAG service only (FastAPI + LangChain + pgvector + CRM client)
+# vs. the full project:
+pip install -r requirements.txt
+# (`requirements-docker.txt` is the same prod set the Docker image installs.)
+```
+
 ```bash
 # 1. Use the bundled virtualenv (or create your own)
 7didan-env\Scripts\activate          # Windows
