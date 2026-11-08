@@ -4,91 +4,125 @@ import re
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
+# Metadata fields copied from the source document into every chunk.
+DOCUMENT_METADATA_FIELDS = (
+    "url",
+    "title",
+    "category",
+    "document_type",
+    "language",
+)
+
+
 class MarkdownChunker:
 
     def __init__(self, chunk_size: int, chunk_overlap: int):
 
         self.size_splitter = RecursiveCharacterTextSplitter(
             chunk_size=chunk_size,
-            chunk_overlap=chunk_overlap
+            chunk_overlap=chunk_overlap,
+            separators=["\n\n", "\n", ". ", " ", ""]
         )
 
-    def chunk(self, texts: list[str]) -> list[str]:
+    def chunk(self, documents: list[dict]) -> list[dict]:
 
         chunk_list = []
 
-        for text in texts:
+        for document in documents:
 
-            # Track the current Markdown hierarchy.
-            h1 = ""
-            h2 = ""
-            current_group = None
+            filename = document["filename"]
+            text = document["content"]
 
-            grouped_sections = {}
+            # Carry the document-level metadata (url, title, ...) into chunks.
+            doc_metadata = {
+                field: document.get(field)
+                for field in DOCUMENT_METADATA_FIELDS
+            }
+
+            # Track the Markdown heading hierarchy.
+            headings = []
+            sections = []
+            current_section = None
 
             for line in text.splitlines():
 
                 line = line.strip()
 
-                # Update H1 context.
-                if re.match(r"^# ", line):
-                    h1 = line[2:].strip()
-                    h2 = ""
-                    current_group = None
+                if not line:
+                    if current_section is not None:
+                        current_section["content"].append("")
                     continue
 
-                # Update H2 context and create a new group.
-                if re.match(r"^## ", line):
-                    h2 = line[3:].strip()
+                # Detect Markdown headings (H1 to H6).
+                match = re.match(r"^(#{1,6})\s+(.+?)\s*#*$", line)
 
-                    group_key = (h1, h2)
+                if match:
 
-                    if group_key not in grouped_sections:
-                        grouped_sections[group_key] = {
-                            "context": f"# {h1}\n## {h2}",
-                            "content": []
-                        }
+                    level = len(match.group(1))
+                    heading_text = match.group(2).strip()
 
-                    current_group = grouped_sections[group_key]
+                    # Keep only the parent headings.
+                    headings = headings[:level - 1]
+
+                    # Add the current heading.
+                    headings.append(heading_text)
+
+                    # Start a new section.
+                    current_section = {
+                        "headings": headings.copy(),
+                        "content": []
+                    }
+
+                    sections.append(current_section)
                     continue
 
-                # Preserve H3 headings, even when they have no description.
-                if re.match(r"^### ", line):
-                    if current_group is not None:
-                        current_group["content"].append(line)
-                    continue
+                # Preserve content appearing before the first heading.
+                if current_section is None:
 
-                # Keep content before the first H2 under the H1 section.
-                if line and current_group is None and h1:
-                    group_key = (h1, "")
-                    if group_key not in grouped_sections:
-                        grouped_sections[group_key] = {
-                              "context": f"# {h1}",
-                              "content": []
-                            }
-                    
-                    current_group = grouped_sections[group_key]
+                    current_section = {
+                        "headings": [],
+                        "content": []
+                    }
 
-                # Add normal content to the current group.
-                if line and current_group is not None:
-                    current_group["content"].append(line)
+                    sections.append(current_section)
 
-            # Split each group into appropriately sized chunks.
-            for group in grouped_sections.values():
+                current_section["content"].append(line)
 
-                content = "\n".join(group["content"]).strip()
+            # Split each section into chunks.
+            for section in sections:
+
+                content = "\n".join(section["content"]).strip()
 
                 if not content:
                     continue
+
+                heading_path = section["headings"]
+
+                # Build the heading context.
+                context = "\n".join(
+                    f"{'#' * (i + 1)} {heading}"
+                    for i, heading in enumerate(heading_path)
+                )
 
                 chunks = self.size_splitter.split_text(content)
 
                 for chunk in chunks:
 
                     contextual_chunk = (
-                        f'{group["context"]}\n\n{chunk}'
+                        f"{context}\n\n{chunk}"
+                        if context
+                        else chunk
                     )
 
-                    chunk_list.append(contextual_chunk.strip())
+                    chunk_list.append({
+                        "filename": filename,
+                        "content": contextual_chunk.strip(),
+                        "headings": heading_path,
+                        "section": " > ".join(heading_path),
+                        "section_h1": heading_path[0] if len(heading_path) > 0 else None,
+                        "section_h2": heading_path[1] if len(heading_path) > 1 else None,
+                        "section_h3": heading_path[2] if len(heading_path) > 2 else None,
+                        **doc_metadata,
+                    })
 
         return chunk_list
